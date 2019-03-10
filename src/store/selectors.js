@@ -6,5 +6,5 @@ export const snapshotSymbolsSelector = state => get(state, 'snapshot.symbols') |
 
 export const allSymbolsSelector = createSelector(
   snapshotSymbolsSelector,
-  symbols => symbols.map((item) => item.symbol)
-)
+  symbols => symbols.map(item => item.symbol),
+);

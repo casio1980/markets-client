@@ -5,79 +5,77 @@ import {
   LOAD_SNAPSHOT_FAILED,
 } from './action-types';
 
-export const setLoadingState = (isLoading) => ({
+export const setLoadingState = isLoading => ({
   type: SET_LOADING_STATE,
-  payload: isLoading
+  payload: isLoading,
 });
 
 export const loadSnapshotPending = () => ({
   type: LOAD_SNAPSHOT_PENDING,
-  payload: null
+  payload: null,
 });
 
-export const loadSnapshotSuccess = (data) => ({
+export const loadSnapshotSuccess = data => ({
   type: LOAD_SNAPSHOT_SUCCESS,
-  payload: data
+  payload: data,
 });
 
-export const loadSnapshotFailed = (err) => ({
+export const loadSnapshotFailed = err => ({
   type: LOAD_SNAPSHOT_FAILED,
-  payload: err
+  payload: err,
 });
 
-export const loadSnapshot = () => {
-  return (dispatch) => {
-    dispatch(loadSnapshotPending());
+export const loadSnapshot = () => (dispatch) => {
+  dispatch(loadSnapshotPending());
 
-    const url = "http://wsrv:3001/snap";
-    const query = `{
-      symbols(date: "2019-03-08") {
-        symbol,
-        snap {
-          status,
-          signalBuy,
-          prev {
-            regularMarketDayHigh,
-            regularMarketDayLow,
-            regularMarketOpen,
-            regularMarketPrice
-          },
-          current {
-            preMarketPrice,
-            regularMarketDayHigh,
-            regularMarketDayLow,
-            regularMarketOpen,
-            regularMarketPrice
-          },
-          decision {
-            signalPrice,
-            buyPrice,
-            takeProfit,
-            stopLoss,
-            decisionType
-          },
-          strategy {
-            yield
-          }
+  const url = 'http://wsrv:3001/snap';
+  const query = `{
+    symbols(date: "2019-03-08") {
+      symbol,
+      snap {
+        status,
+        signalBuy,
+        prev {
+          regularMarketDayHigh,
+          regularMarketDayLow,
+          regularMarketOpen,
+          regularMarketPrice
+        },
+        current {
+          preMarketPrice,
+          regularMarketDayHigh,
+          regularMarketDayLow,
+          regularMarketOpen,
+          regularMarketPrice
+        },
+        decision {
+          signalPrice,
+          buyPrice,
+          takeProfit,
+          stopLoss,
+          decisionType
+        },
+        strategy {
+          yield
         }
       }
-    }`;
+    }
+  }`;
 
-    fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query }),
-    })
+  fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query }),
+  })
     .then((response) => {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
 
-        return response;
+      return response;
     })
-    .then((response) => response.json())
-    .then((json) => json.data)
-    .then((data) => dispatch(loadSnapshotSuccess(data)))
-    .catch((err) => dispatch(loadSnapshotFailed(err)));
-  };
+    .then(response => response.json())
+    .then(json => json.data)
+    .then(data => dispatch(loadSnapshotSuccess(data)))
+    .catch(err => dispatch(loadSnapshotFailed(err)));
 };

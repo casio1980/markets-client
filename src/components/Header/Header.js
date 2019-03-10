@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { allSymbolsSelector } from "../../store";
+import { connect } from 'react-redux';
+import { allSymbolsSelector } from '../../store';
 // import './App.css';
 
 class Header extends Component {

@@ -17,14 +17,14 @@ const reducer = (state = defaultState, action) => {
       return {
         ...state,
         isLoading: action.payload,
-      }
+      };
     }
 
     case LOAD_SNAPSHOT_PENDING: {
       return {
         ...state,
         isLoading: true,
-      }
+      };
     }
 
     case LOAD_SNAPSHOT_SUCCESS: {
@@ -32,7 +32,7 @@ const reducer = (state = defaultState, action) => {
         ...state,
         snapshot: payload,
         isLoading: false,
-      }
+      };
     }
 
     case LOAD_SNAPSHOT_FAILED: {
@@ -40,7 +40,7 @@ const reducer = (state = defaultState, action) => {
         ...state,
         error: payload,
         isLoading: false,
-      }
+      };
     }
 
     default:
