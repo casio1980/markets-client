@@ -1,0 +1,6 @@
+.nav {
+  color: gainsboro;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+}

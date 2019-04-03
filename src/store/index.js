@@ -1,8 +1,16 @@
 import { setLoadingState, loadSnapshot } from './actions';
-import { allSymbolsSelector } from './selectors';
+import {
+  allSnapshotsSelector,
+  chartDataSelector,
+  isLoadingSelector,
+  symbolSnapshotSelector,
+} from './selectors';
 
 export {
-  setLoadingState,
+  allSnapshotsSelector,
+  chartDataSelector,
+  isLoadingSelector,
   loadSnapshot,
-  allSymbolsSelector,
+  setLoadingState,
+  symbolSnapshotSelector,
 };

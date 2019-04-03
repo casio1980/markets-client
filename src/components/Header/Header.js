@@ -1,30 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { allSymbolsSelector } from '../../store';
-// import './App.css';
+import React from 'react';
+import styles from './Header.module.css';
 
-class Header extends Component {
-  render() {
-    const { symbols } = this.props;
-    const items = symbols.map(item => <p key={item}>{item}</p>);
-
-    return (
-      <header className="App-header">
-        {items}
-      </header>
-    );
-  }
+export default function Header({ children }) {
+  return (
+    <header className={styles.header}>
+      Markt
+      <aside className={styles.aside}>
+        {children}
+      </aside>
+    </header>
+  );
 }
-
-const mapStateToProps = state => ({
-  symbols: allSymbolsSelector(state),
-});
-
-// const mapDispatchToProps = dispatch => ({
-//   loadSnapshot: () => dispatch(ACTIONS.createItem(item)),
-// });
-
-export default connect(
-  mapStateToProps,
-  // mapDispatchToProps
-)(Header);
