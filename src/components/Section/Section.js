@@ -23,7 +23,7 @@ class Section extends PureComponent {
     return (
       <section className={styles.section}>
         <header className={styles.header}>
-          {symbol} :: {status} :: {decisionType}
+          {symbol} :: {status}
           <aside className={styles.header_aside}>
             {strategy && strategy.yield}
           </aside>

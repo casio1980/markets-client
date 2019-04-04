@@ -30,7 +30,7 @@ export const loadSnapshot = () => (dispatch) => {
 
   const url = 'http://wsrv:3001/snap';
   const query = `{
-    symbols(date: "2019-04-03") {
+    symbols {
       symbol,
       snap {
         status,

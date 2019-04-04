@@ -1,21 +1,29 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { scaleTime } from 'd3-scale';
-import { utcDay } from 'd3-time';
+import { format } from 'd3-format';
 import { ChartCanvas, Chart } from 'react-stockcharts';
 import { CandlestickSeries } from 'react-stockcharts/lib/series';
 import { XAxis, YAxis } from 'react-stockcharts/lib/axes';
-import { timeIntervalBarWidth } from 'react-stockcharts/lib/utils';
+import { CrossHairCursor, MouseCoordinateY } from 'react-stockcharts/lib/coordinates';
+import { discontinuousTimeScaleProvider } from 'react-stockcharts/lib/scale';
 import { chartDataSelector } from '../../store';
 // import styles from './CandleStickChart.module.css';
 
 class CandleStickChart extends PureComponent {
   render() {
     const {
-      symbol, data, height, margin, ratio, type, width,
+      symbol, data: initialData, height, margin, ratio, type, width,
     } = this.props;
 
-    const xAccessor = d => d.date;
+    const xScaleProvider = discontinuousTimeScaleProvider
+      .inputDateAccessor(d => d.date);
+    const {
+      data,
+      xScale,
+      xAccessor,
+      displayXAccessor,
+    } = xScaleProvider(initialData);
+
     const xExtents = [
       xAccessor(data[0]),
       xAccessor(data[data.length - 1]),
@@ -28,18 +36,23 @@ class CandleStickChart extends PureComponent {
         ratio={ratio}
         margin={margin}
         data={data}
-        // displayXAccessor={xAccessor}
-        xAccessor={xAccessor}
-        xScale={scaleTime()}
+        xScale={xScale}
         xExtents={xExtents}
+        xAccessor={xAccessor}
+        displayXAccessor={displayXAccessor}
         seriesName={symbol}
         type={type}
       >
         <Chart id={1} yExtents={d => [d.high, d.low]}>
-          <XAxis axisAt="bottom" orient="bottom" ticks={2} />
+          <XAxis axisAt="bottom" orient="bottom" ticks={4} />
           <YAxis axisAt="left" orient="left" ticks={6} />
-          <CandlestickSeries width={timeIntervalBarWidth(utcDay)} />
+          <MouseCoordinateY
+            at="right"
+            orient="right"
+            displayFormat={format('.2f')} />
+          <CandlestickSeries />
         </Chart>
+        <CrossHairCursor />
       </ChartCanvas>
     );
   }
@@ -51,7 +64,7 @@ class CandleStickChart extends PureComponent {
     },
     ratio: 1,
     type: 'hybrid', // 'svg'
-    width: 200,
+    width: 300,
   }
 }
 

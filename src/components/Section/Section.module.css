@@ -1,5 +1,7 @@
 .section {
+  background-color: #454a56;
   border: 1px solid dimgrey;
+  border-radius: 5px;
   padding: 10px;
 }
 
