@@ -12,13 +12,14 @@ class Section extends PureComponent {
     }
 
     const {
-      prev, current, decision, strategy, signalBuy, status,
+      decision, strategy, signalBuy, status,
     } = snapshot;
     const {
-      signalPrice, buyPrice, takeProfit, stopLoss, decisionType,
+      buyPrice, takeProfit, stopLoss, decisionType,
     } = decision;
 
-    // console.log('>>>', prev, current, decision, signalBuy, status);
+    const profitClassName = decisionType === 'PROFIT' || decisionType === 'BOTH' ? styles.green : null;
+    const lossClassName = decisionType === 'LOSS' || decisionType === 'BOTH' ? styles.red : null;
 
     return (
       <section className={styles.section}>
@@ -28,9 +29,17 @@ class Section extends PureComponent {
             {strategy && strategy.yield}
           </aside>
         </header>
-        <CandleStickChart
-          symbol={symbol}
-        />
+        <div className={styles.content}>
+          <CandleStickChart
+            symbol={symbol}
+          />
+          {signalBuy && <div className={styles.data}>
+            <p>Buy: <b>{buyPrice}</b></p>
+            <p className={profitClassName}>Profit: <b>{takeProfit}</b></p>
+            <p className={lossClassName}>Stop: <b>{stopLoss}</b></p>
+            {/* <p>{decisionType}</p> */}
+          </div>}
+        </div>
       </section>
     );
   }

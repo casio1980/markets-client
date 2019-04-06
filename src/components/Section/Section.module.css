@@ -9,10 +9,30 @@
   color: gainsboro;
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
 }
 
 .header_aside {
   color: gray;
   margin-left: auto;
+}
+
+.content {
+  display: flex;
+}
+
+.data {
+  color: gainsboro;
+  padding: 30px;
+}
+
+.data p {
+  margin-top: 0;
+}
+
+.data p.green {
+  color: green;
+}
+
+.data p.red {
+  color: red;
 }

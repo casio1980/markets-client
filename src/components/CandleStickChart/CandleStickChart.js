@@ -60,7 +60,7 @@ class CandleStickChart extends PureComponent {
   static defaultProps = {
     height: 300,
     margin: {
-      left: 50, right: 50, top: 50, bottom: 50,
+      left: 50, right: 50, top: 30, bottom: 30,
     },
     ratio: 1,
     type: 'hybrid', // 'svg'
