@@ -17,14 +17,15 @@ export const chartDataSelector = createSelector(
   symbolSnapshotSelector,
   (snapshot) => {
     const { prev, current, status } = snapshot;
+    const { date } = current;
     const isRegular = status === REGULAR;
 
-    const date0 = new Date();
+    const date0 = new Date(date);
     date0.setDate(date0.getDate() - 2);
-    const date1 = new Date();
+    const date1 = new Date(date);
     date1.setDate(date1.getDate() - 1);
-    const date2 = new Date();
-    const date3 = new Date();
+    const date2 = new Date(date);
+    const date3 = new Date(date);
     date3.setDate(date3.getDate() + 1);
 
     return [{

@@ -12,11 +12,12 @@ class Section extends PureComponent {
     }
 
     const {
-      decision, strategy, signalBuy, status,
+      decision, strategy, signalBuy, current,
     } = snapshot;
     const {
       buyPrice, takeProfit, stopLoss, decisionType,
     } = decision;
+    const { date, status } = current;
 
     const profitClassName = decisionType === 'PROFIT' || decisionType === 'BOTH' ? styles.green : null;
     const lossClassName = decisionType === 'LOSS' || decisionType === 'BOTH' ? styles.red : null;
@@ -26,7 +27,7 @@ class Section extends PureComponent {
         <header className={styles.header}>
           {symbol} :: {status}
           <aside className={styles.header_aside}>
-            {strategy && strategy.yield}
+            {date} :: {strategy && strategy.yield}
           </aside>
         </header>
         <div className={styles.content}>

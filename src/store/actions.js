@@ -28,12 +28,11 @@ export const loadSnapshotFailed = err => ({
 export const loadSnapshot = () => (dispatch) => {
   dispatch(loadSnapshotPending());
 
-  const url = 'http://wsrv:3001/snap';
+  const url = 'http://wsrv:3001/query';
   const query = `{
     symbols {
       symbol,
       snap {
-        status,
         signalBuy,
         prev {
           regularMarketDayHigh,
@@ -42,6 +41,8 @@ export const loadSnapshot = () => (dispatch) => {
           regularMarketPrice
         },
         current {
+          date,
+          status,
           preMarketPrice,
           regularMarketDayHigh,
           regularMarketDayLow,
