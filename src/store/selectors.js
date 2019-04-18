@@ -16,8 +16,8 @@ export const symbolSnapshotSelector = createSelector(
 export const chartDataSelector = createSelector(
   symbolSnapshotSelector,
   (snapshot) => {
-    const { prev, current, status } = snapshot;
-    const { date } = current;
+    const { prev, current } = snapshot;
+    const { date, status } = current;
     const isRegular = status === REGULAR;
 
     const date0 = new Date(date);
