@@ -8,6 +8,10 @@ module.exports = {
   PREMARKET: 'PRE',
   REGULAR: 'REGULAR',
 
+  PROFIT: 'PROFIT',
+  LOSS: 'LOSS',
+  BOTH: 'BOTH',
+
   ADJ_CLOSE: 'adjClose',
   CLOSE: 'close',
   DATE: 'date',

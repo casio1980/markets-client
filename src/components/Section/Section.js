@@ -2,6 +2,9 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { CandleStickChart } from '..';
 import { symbolSnapshotSelector } from '../../store';
+import {
+  REGULAR, PROFIT, LOSS, BOTH,
+} from '../../constants';
 import styles from './Section.module.css';
 
 class Section extends PureComponent {
@@ -19,8 +22,8 @@ class Section extends PureComponent {
     } = decision;
     const { date, status } = current;
 
-    const profitClassName = decisionType === 'PROFIT' || decisionType === 'BOTH' ? styles.green : null;
-    const lossClassName = decisionType === 'LOSS' || decisionType === 'BOTH' ? styles.red : null;
+    const profitClassName = [PROFIT, BOTH].includes(decisionType) ? styles.green : null;
+    const lossClassName = [LOSS, BOTH].includes(decisionType) ? styles.red : null;
 
     return (
       <section className={styles.section}>
@@ -34,12 +37,15 @@ class Section extends PureComponent {
           <CandleStickChart
             symbol={symbol}
           />
-          {signalBuy && <div className={styles.data}>
-            <p>Buy: <b>{buyPrice}</b></p>
-            <p className={profitClassName}>Profit: <b>{takeProfit}</b></p>
-            <p className={lossClassName}>Stop: <b>{stopLoss}</b></p>
-            {/* <p>{decisionType}</p> */}
-          </div>}
+          <div className={[styles.data, status !== REGULAR ? styles.gray : null].join(' ')}>
+            {signalBuy && <div>
+              <p className={styles.primary_data}>Buy @ <b>{buyPrice}</b></p>
+              <p className={profitClassName}>Profit: <b>{takeProfit}</b></p>
+              <p className={lossClassName}>Stop: <b>{stopLoss}</b></p>
+            </div>}
+            {!signalBuy
+              && <p className={styles.primary_data}>No Signal</p>}
+          </div>
         </div>
       </section>
     );

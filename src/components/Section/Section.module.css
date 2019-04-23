@@ -29,10 +29,19 @@
   margin-top: 0;
 }
 
-.data p.green {
+.data p.primary_data {
+  font-size: x-large;
+  margin-bottom: 16px;
+}
+
+.gray {
+  color: gray;
+}
+
+.green {
   color: green;
 }
 
-.data p.red {
+.red {
   color: red;
 }
