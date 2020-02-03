@@ -28,7 +28,7 @@ export const loadSnapshotFailed = err => ({
 export const loadSnapshot = () => (dispatch) => {
   dispatch(loadSnapshotPending());
 
-  const url = 'http://wsrv:3001/query';
+  const url = `http://${process.env.REACT_APP_SERVER_HOST_ADDRESS}:3001/query`;
   const query = `{
     symbols {
       symbol,
