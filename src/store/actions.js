@@ -58,6 +58,14 @@ export const loadSnapshot = () => (dispatch) => {
         },
         strategy {
           yield
+        },
+        candles {
+          o,
+          c,
+          h,
+          l,
+          v,
+          time
         }
       }
     }

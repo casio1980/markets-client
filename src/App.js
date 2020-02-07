@@ -39,6 +39,9 @@ class App extends Component {
         <Section
           symbol={'NVDA'}
         />
+        <Section
+          symbol={'SOHU'}
+        />
       </Provider>
     );
   }

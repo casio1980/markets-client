@@ -15,8 +15,9 @@ export const symbolSnapshotSelector = createSelector(
 
 export const chartDataSelector = createSelector(
   symbolSnapshotSelector,
-  (snapshot) => {
-    const { prev, current } = snapshot;
+  (state, props) => props.useCandles,
+  (snapshot, useCandles) => {
+    const { prev, current, candles } = snapshot;
     const { date, status } = current;
     const isRegular = status === REGULAR;
 
@@ -27,6 +28,30 @@ export const chartDataSelector = createSelector(
     const date2 = new Date(date);
     const date3 = new Date(date);
     date3.setDate(date3.getDate() + 1);
+
+    if (useCandles) {
+      const [candlePrev, candleCurrent] = candles;
+
+      return [{
+        date: date0,
+      }, {
+        date: date1,
+        open: candlePrev.o,
+        high: candlePrev.h,
+        low: candlePrev.l,
+        close: candlePrev.c,
+        volume: candlePrev.v,
+      }, {
+        date: date2,
+        open: candleCurrent.o,
+        high: candleCurrent.h,
+        low: candleCurrent.l,
+        close: candleCurrent.c,
+        volume: candleCurrent.v,
+      }, {
+        date: date3,
+      }];
+    }
 
     return [{
       date: date0,

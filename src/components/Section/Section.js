@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { CandleStickChart } from '..';
+import CandleStickChart from '../CandleStickChart';
 import { symbolSnapshotSelector } from '../../store';
 import {
   REGULAR, PROFIT, LOSS, BOTH,
@@ -36,6 +36,10 @@ class Section extends PureComponent {
         <div className={styles.content}>
           <CandleStickChart
             symbol={symbol}
+          />
+          <CandleStickChart
+            symbol={symbol}
+            useCandles={true}
           />
           <div className={[styles.data, status !== REGULAR ? styles.gray : null].join(' ')}>
             {signalBuy && <div>
