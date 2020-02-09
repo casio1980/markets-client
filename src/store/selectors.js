@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import { get } from 'lodash';
 import { REGULAR } from '../constants';
+import { getPrevDate } from '../helpers';
 
 export const snapshotSelector = state => get(state, 'snapshot');
 export const isLoadingSelector = state => get(state, 'isLoading');
@@ -30,7 +31,8 @@ export const chartDataSelector = createSelector(
     date3.setDate(date3.getDate() + 1);
 
     if (useCandles) {
-      const [candlePrev, candleCurrent] = candles;
+      const candleCurrent = candles.find(el => el.date === current.date);
+      const candlePrev = candles.find(el => el.date === getPrevDate(current.date));
 
       return [{
         date: date0,

@@ -29,8 +29,9 @@ export const loadSnapshot = () => (dispatch) => {
   dispatch(loadSnapshotPending());
 
   const url = `http://${process.env.REACT_APP_SERVER_HOST_ADDRESS}:3001/query`;
+  // for specific date use: symbols(date: "2020-02-07")
   const query = `{
-    symbols {
+    symbols(date: "2020-02-07") {
       symbol,
       snap {
         signalBuy,
@@ -65,7 +66,7 @@ export const loadSnapshot = () => (dispatch) => {
           h,
           l,
           v,
-          time
+          date
         }
       }
     }
