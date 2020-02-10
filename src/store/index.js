@@ -4,6 +4,8 @@ import {
   chartDataSelector,
   isLoadingSelector,
   symbolSnapshotSelector,
+  currentCandleSelector,
+  prevCandleSelector,
 } from './selectors';
 
 export {
@@ -13,4 +15,6 @@ export {
   loadSnapshot,
   setLoadingState,
   symbolSnapshotSelector,
+  currentCandleSelector,
+  prevCandleSelector,
 };

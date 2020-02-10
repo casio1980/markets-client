@@ -1,4 +1,6 @@
 module.exports = {
+  COMISSION: 0.003,
+
   DATE_FORMAT: 'YYYY-MM-DD',
 
   NOT_AVAILABLE: 'N/A',

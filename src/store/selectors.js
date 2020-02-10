@@ -14,11 +14,33 @@ export const symbolSnapshotSelector = createSelector(
   (symbols, symbol) => get(symbols.find(item => item.symbol === symbol), 'snap'),
 );
 
-export const chartDataSelector = createSelector(
+export const currentCandleSelector = createSelector(
   symbolSnapshotSelector,
+  (snap) => {
+    if (!snap) return {};
+    const { candles, current } = snap;
+
+    return candles.find(el => el.date === current.date) || {};
+  },
+);
+
+export const prevCandleSelector = createSelector(
+  symbolSnapshotSelector,
+  (snap) => {
+    if (!snap) return {};
+    const { candles, current } = snap;
+
+    return candles.find(el => el.date === getPrevDate(current.date)) || {};
+  },
+);
+
+export const chartDataSelector = createSelector( // TODO should be 2 selectors
+  symbolSnapshotSelector,
+  currentCandleSelector,
+  prevCandleSelector,
   (state, props) => props.useCandles,
-  (snapshot, useCandles) => {
-    const { prev, current, candles } = snapshot;
+  (snapshot, currentCandle, prevCandle, useCandles) => {
+    const { prev, current } = snapshot;
     const { date, status } = current;
     const isRegular = status === REGULAR;
 
@@ -31,25 +53,22 @@ export const chartDataSelector = createSelector(
     date3.setDate(date3.getDate() + 1);
 
     if (useCandles) {
-      const candleCurrent = candles.find(el => el.date === current.date);
-      const candlePrev = candles.find(el => el.date === getPrevDate(current.date));
-
       return [{
         date: date0,
       }, {
         date: date1,
-        open: candlePrev.o,
-        high: candlePrev.h,
-        low: candlePrev.l,
-        close: candlePrev.c,
-        volume: candlePrev.v,
+        open: prevCandle.o,
+        high: prevCandle.h,
+        low: prevCandle.l,
+        close: prevCandle.c,
+        volume: prevCandle.v,
       }, {
         date: date2,
-        open: candleCurrent.o,
-        high: candleCurrent.h,
-        low: candleCurrent.l,
-        close: candleCurrent.c,
-        volume: candleCurrent.v,
+        open: currentCandle.o,
+        high: currentCandle.h,
+        low: currentCandle.l,
+        close: currentCandle.c,
+        volume: currentCandle.v,
       }, {
         date: date3,
       }];
