@@ -1,0 +1,251 @@
+{
+    "data": {
+       "symbols": [
+          {
+             "symbol": "NFLX",
+             "snap": {
+                "signalBuy": true,
+                "prev": {
+                   "regularMarketDayHigh": 385.37,
+                   "regularMarketDayLow": 376.68,
+                   "regularMarketOpen": 376.96,
+                   "regularMarketPrice": 381.4
+                },
+                "current": {
+                   "date": "2020-02-14",
+                   "status": "PRE",
+                   "preMarketPrice": 382.41,
+                   "regularMarketDayHigh": 385.37,
+                   "regularMarketDayLow": 376.68,
+                   "regularMarketOpen": 376.96,
+                   "regularMarketPrice": 381.4
+                },
+                "decision": {
+                   "signalPrice": 376.68,
+                   "buyPrice": 382.41,
+                   "takeProfit": 390.06,
+                   "stopLoss": 380.5,
+                   "decisionType": null
+                },
+                "strategy": {
+                  "yield": "1000%"
+                },
+                "candles": [
+                   {
+                      "o": 379.73,
+                      "c": 381.4,
+                      "h": 385.23,
+                      "l": 373.38,
+                      "v": 1330670,
+                      "date": "2020-02-13"
+                   },
+                   {
+                      "o": 381.01,
+                      "c": 382.68,
+                      "h": 383.37,
+                      "l": 381.01,
+                      "v": 1457,
+                      "date": "2020-02-14"
+                   }
+                ]
+             }
+          },
+          {
+             "symbol": "TSLA",
+             "snap": {
+                "signalBuy": true,
+                "prev": {
+                   "regularMarketDayHigh": 818,
+                   "regularMarketDayLow": 735,
+                   "regularMarketOpen": 741.84,
+                   "regularMarketPrice": 804
+                },
+                "current": {
+                   "date": "2020-02-14",
+                   "status": "PRE",
+                   "preMarketPrice": 784.9,
+                   "regularMarketDayHigh": 818,
+                   "regularMarketDayLow": 735,
+                   "regularMarketOpen": 741.84,
+                   "regularMarketPrice": 804
+                },
+                "decision": {
+                   "signalPrice": 735,
+                   "buyPrice": 784.9,
+                   "takeProfit": 796.67,
+                   "stopLoss": 780.98,
+                   "decisionType": null
+                },
+                "strategy": {
+                   "yield": "1000%"
+                },
+                "candles": [
+                   {
+                      "o": 755,
+                      "c": 804,
+                      "h": 818,
+                      "l": 712.59,
+                      "v": 6968313,
+                      "date": "2020-02-13"
+                   },
+                   {
+                      "o": 802,
+                      "c": 784,
+                      "h": 813.9,
+                      "l": 781,
+                      "v": 151586,
+                      "date": "2020-02-14"
+                   }
+                ]
+             }
+          },
+          {
+             "symbol": "NVDA",
+             "snap": {
+                "signalBuy": true,
+                "prev": {
+                   "regularMarketDayHigh": 273.4748,
+                   "regularMarketDayLow": 269.11,
+                   "regularMarketOpen": 270.21,
+                   "regularMarketPrice": 270.78
+                },
+                "current": {
+                   "date": "2020-02-14",
+                   "status": "PRE",
+                   "preMarketPrice": 287.7399,
+                   "regularMarketDayHigh": 273.4748,
+                   "regularMarketDayLow": 269.11,
+                   "regularMarketOpen": 270.21,
+                   "regularMarketPrice": 270.78
+                },
+                "decision": {
+                   "signalPrice": 269.11,
+                   "buyPrice": 287.7399,
+                   "takeProfit": 290.62,
+                   "stopLoss": 286.3,
+                   "decisionType": null
+                },
+                "strategy": {
+                   "yield": "1000%"
+                },
+                "candles": [
+                   {
+                      "o": 273,
+                      "c": 270.78,
+                      "h": 292.49,
+                      "l": 269.04,
+                      "v": 3065769,
+                      "date": "2020-02-13"
+                   },
+                   {
+                      "o": 282.01,
+                      "c": 287.81,
+                      "h": 290.84,
+                      "l": 282.01,
+                      "v": 33463,
+                      "date": "2020-02-14"
+                   }
+                ]
+             }
+          },
+          {
+             "symbol": "TWTR",
+             "snap": {
+                "signalBuy": true,
+                "prev": {
+                   "regularMarketDayHigh": 37.32,
+                   "regularMarketDayLow": 36.21,
+                   "regularMarketOpen": 36.43,
+                   "regularMarketPrice": 37.16
+                },
+                "current": {
+                   "date": "2020-02-14",
+                   "status": "PRE",
+                   "preMarketPrice": 37.35,
+                   "regularMarketDayHigh": 37.32,
+                   "regularMarketDayLow": 36.21,
+                   "regularMarketOpen": 36.43,
+                   "regularMarketPrice": 37.16
+                },
+                "decision": {
+                   "signalPrice": 36.21,
+                   "buyPrice": 37.35,
+                   "takeProfit": 37.91,
+                   "stopLoss": 37.16,
+                   "decisionType": null
+                },
+                "strategy": {
+                   "yield": "1000%"
+                },
+                "candles": [
+                   {
+                      "o": 36.55,
+                      "c": 37.16,
+                      "h": 37.31,
+                      "l": 35.79,
+                      "v": 1832518,
+                      "date": "2020-02-13"
+                   },
+                   {
+                      "o": 37.03,
+                      "c": 37.36,
+                      "h": 37.41,
+                      "l": 37.03,
+                      "v": 6306,
+                      "date": "2020-02-14"
+                   }
+                ]
+             }
+          },
+          {
+             "symbol": "SOHU",
+             "snap": {
+                "signalBuy": true,
+                "prev": {
+                   "regularMarketDayHigh": 10.92,
+                   "regularMarketDayLow": 10.73,
+                   "regularMarketOpen": 10.92,
+                   "regularMarketPrice": 10.65
+                },
+                "current": {
+                   "date": "2020-02-14",
+                   "status": "PRE",
+                   "preMarketPrice": 10.9,
+                   "regularMarketDayHigh": 10.92,
+                   "regularMarketDayLow": 10.73,
+                   "regularMarketOpen": 10.92,
+                   "regularMarketPrice": 10.65
+                },
+                "decision": {
+                   "signalPrice": 10.73,
+                   "buyPrice": 10.9,
+                   "takeProfit": 11.06,
+                   "stopLoss": 10.85,
+                   "decisionType": null
+                },
+                "strategy": {
+                   "yield": "284.82%"
+                },
+                "candles": [
+                   {
+                      "o": 10.88,
+                      "c": 10.65,
+                      "h": 11.1,
+                      "l": 10.61,
+                      "v": 109395,
+                      "date": "2020-02-13"
+                   },
+                   {
+                      "o": 10.79,
+                      "c": 10.84,
+                      "h": 10.95,
+                      "l": 10.63,
+                      "v": 146,
+                      "date": "2020-02-14"
+                   }
+                ]
+             }
+          }
+       ]
+    }
+ }

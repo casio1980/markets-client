@@ -6,6 +6,7 @@ import reducer from './store/reducer';
 import { loadSnapshot } from './store';
 import { Header, Loader, Section } from './components';
 import './App.css';
+import { data as mockData } from './store/store.mock.json';
 
 const store = createStore(
   reducer,
@@ -16,10 +17,12 @@ const store = createStore(
 );
 class App extends Component {
   componentDidMount() {
-    store.dispatch(loadSnapshot());
+    const data = process.env.REACT_APP_USE_MOCK === 'true' ? mockData : null;
+
+    store.dispatch(loadSnapshot(data));
 
     setInterval(() => {
-      store.dispatch(loadSnapshot());
+      store.dispatch(loadSnapshot(data));
     }, 30 * 1000);
   }
 

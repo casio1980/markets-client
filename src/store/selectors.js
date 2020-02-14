@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { get } from 'lodash';
 import { REGULAR } from '../constants';
-import { getPrevDate } from '../helpers';
+import { getCurrentDate, getPrevDate } from '../helpers';
 
 export const snapshotSelector = state => get(state, 'snapshot');
 export const isLoadingSelector = state => get(state, 'isLoading');
@@ -19,8 +19,9 @@ export const currentCandleSelector = createSelector(
   (snap) => {
     if (!snap) return {};
     const { candles, current } = snap;
+    const currentDate = current ? current.date : getCurrentDate();
 
-    return candles.find(el => el.date === current.date) || {};
+    return candles.find(el => el.date === currentDate) || {};
   },
 );
 
@@ -29,8 +30,9 @@ export const prevCandleSelector = createSelector(
   (snap) => {
     if (!snap) return {};
     const { candles, current } = snap;
+    const currentDate = current ? current.date : getCurrentDate();
 
-    return candles.find(el => el.date === getPrevDate(current.date)) || {};
+    return candles.find(el => el.date === getPrevDate(currentDate)) || {};
   },
 );
 
@@ -41,7 +43,7 @@ export const chartDataSelector = createSelector( // TODO should be 2 selectors
   (state, props) => props.useCandles,
   (snapshot, currentCandle, prevCandle, useCandles) => {
     const { prev, current } = snapshot;
-    const { date, status } = current;
+    const { date, status } = current || {};
     const isRegular = status === REGULAR;
 
     const date0 = new Date(date);

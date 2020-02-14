@@ -19,7 +19,7 @@ class Section extends PureComponent {
     const {
       strategy, current, // signalBuy, decision
     } = snapshot;
-    const { date, status } = current;
+    const { date, status } = current || {};
 
     const { o: currentOpen } = currentCandle;
     const { o: prevOpen, l: prevLow, h: prevHigh } = prevCandle;
